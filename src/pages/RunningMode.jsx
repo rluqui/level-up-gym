@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, MapPin, Activity, Save, TrendingUp } from 'lucide-react';
 import { useGamification } from '../context/GamificationContext';
+import LiveRunningMap from '../components/LiveRunningMap';
 
 const RunningMode = () => {
     const navigate = useNavigate();
@@ -11,6 +14,7 @@ const RunningMode = () => {
     const [duration, setDuration] = useState(''); // en minutos
     const [rpe, setRpe] = useState(5); // 1-10
     const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+    const [showMap, setShowMap] = useState(false); // GPS Mode
 
     // Métricas calculadas
     const [pace, setPace] = useState(0); // min/km
@@ -50,6 +54,19 @@ const RunningMode = () => {
     };
 
     const { addXp } = useGamification();
+
+    // Callback cuando el mapa termina y guarda
+    const handleMapSave = (data) => {
+        setShowMap(false);
+        setDistance(data.distance);
+        setDuration(data.duration);
+        // Opcional: Auto-save inmediato o dejar que el usuario revise y guarde
+        // Vamos a rellenar los inputs y dejar que el usuario ponga el RPE y guarde
+    };
+
+    if (showMap) {
+        return <LiveRunningMap onSaveRun={handleMapSave} onClose={() => setShowMap(false)} />;
+    }
 
     const handleSave = () => {
         if (!distance || !duration) return;
@@ -95,6 +112,20 @@ const RunningMode = () => {
 
             {/* Tarjeta de Ingreso */}
             <div className="card mb-6 border-l-4 border-orange-500">
+
+                {/* Botón GPS */}
+                <button
+                    onClick={() => setShowMap(true)}
+                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 py-3 rounded-lg mb-6 flex items-center justify-center gap-2 font-bold shadow-lg animate-pulse"
+                >
+                    <MapPin className="animate-bounce" />
+                    INICIAR SEGUIMIENTO GPS (BETA)
+                </button>
+
+                <div className="text-center text-xs text-muted mb-4 border-b border-gray-700 pb-2">
+                    o ingresa datos manuales
+                </div>
+
                 <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
                         <label className="block text-sm text-muted mb-1 flex items-center gap-1">
