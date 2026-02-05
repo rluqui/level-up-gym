@@ -21,8 +21,8 @@ export const exerciseLibrary = {
     ],
     leg_knee: [ // Dominantes de rodilla (Cuádriceps)
         { name: 'Sentadilla (Squat)', videoUrl: 'https://www.youtube.com/watch?v=1OoV7D8P6D0' }, // Powerexplosive (Técnica completa)
-        { name: 'Prensa de Piernas', videoUrl: 'https://www.youtube.com/watch?v=yZvxZrMIPkk' },
-        { name: 'Zancadas (Lunges)', videoUrl: 'https://www.youtube.com/watch?v=QOVaHwm-Q6U' }, // Keep if good, else: https://www.youtube.com/watch?v=Fj-L8ip-2NM (P4P)
+        { name: 'Prensa de Piernas', videoUrl: 'https://www.youtube.com/watch?v=wpHk7S4eF5I' },
+        { name: 'Zancadas (Lunges)', videoUrl: 'https://www.youtube.com/watch?v=QOVaHwm-Q6U' }, // Keep if good
         { name: 'Sentadilla Goblet', videoUrl: 'https://www.youtube.com/watch?v=MeIiIdhvXT4' }
     ],
     leg_hip: [ // Dominantes de cadera (Glúteo/Femoral)

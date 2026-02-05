@@ -9,7 +9,7 @@ export const workoutsDetails = {
                 name: 'Prensa 45° o Sentadillas',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://www.youtube.com/watch?v=1OoV7D8P6D0', // Powerexplosive Squat
+                videoUrl: 'https://www.youtube.com/watch?v=wpHk7S4eF5I', // User suggestion for Prensa 45
                 muscles: 'Cuádriceps, Glúteos',
                 benefits: 'El rey de los ejercicios. Construye masa y fuerza general en todo el tren inferior.'
             },
