@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'; // Quitamos el Router de aquí
 import { AuthProvider } from './context/AuthContext';
-import { ExercisesProvider } from './context/ExercisesContext'; // Nuevo Contexto
+import { ExercisesProvider } from './context/ExercisesContext';
+import { GamificationProvider } from './context/GamificationContext';
 import Workouts from './pages/Workouts';
 import ActiveWorkout from './pages/ActiveWorkout';
 import WorkoutDetail from './pages/WorkoutDetail';
@@ -36,6 +37,7 @@ function App() {
             </Routes>
             <Navigation />
           </div>
+        </GamificationProvider>
       </ExercisesProvider>
     </AuthProvider>
   );
