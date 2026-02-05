@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { ArrowLeft, Clock, MapPin, Activity, Save, TrendingUp } from 'lucide-react';
 import { useGamification } from '../context/GamificationContext';
 import LiveRunningMap from '../components/LiveRunningMap';
