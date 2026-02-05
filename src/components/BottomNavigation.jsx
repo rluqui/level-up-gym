@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Dumbbell, Utensils, User } from 'lucide-react';
+import { Home, Dumbbell, Utensils, User, Users } from 'lucide-react';
 
 const BottomNavigation = () => {
     const navItems = [
