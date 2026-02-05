@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Clock, CheckCircle, Save, PlayCircle } from 'lucide-react';
 import { workoutsDetails } from '../data/workouts';
+import { useExercises } from '../context/ExercisesContext';
 
 const ActiveWorkout = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
+    const { getExerciseVideo } = useExercises();
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(true);
 
@@ -98,9 +100,9 @@ const ActiveWorkout = () => {
                     <div key={exIndex} className="animate-fade-in card">
                         <div className="flex justify-between items-center" style={{ marginBottom: '1rem' }}>
                             <h3 style={{ marginBottom: 0 }}>{exercise.name}</h3>
-                            {exercise.videoUrl && (
+                            {(exercise.videoUrl || getExerciseVideo(exercise.name)) && (
                                 <a
-                                    href={exercise.videoUrl}
+                                    href={getExerciseVideo(exercise.name, exercise.videoUrl)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn flex items-center gap-1"

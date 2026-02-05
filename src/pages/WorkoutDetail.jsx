@@ -4,11 +4,15 @@ import { ArrowLeft, Clock, Flame, Repeat, PlayCircle, Info, AlertTriangle, Check
 import { workoutsDetails } from '../data/workouts';
 import { analyzeImportedRoutine } from '../utils/aiCoach';
 import BodyMap from '../components/BodyMap';
+import { useExercises } from '../context/ExercisesContext';
 
 const WorkoutDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
+
+    // Obtener función para URLs dinámicas
+    const { getExerciseVideo } = useExercises();
 
     // Detectar si es AI (viene por state) o Importada (por ID)
     const isAi = location.state?.isAi;
@@ -76,9 +80,9 @@ const WorkoutDetail = () => {
                     <div key={index} className="card animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                         <div className="flex justify-between items-start" style={{ marginBottom: '0.5rem' }}>
                             <h4 style={{ marginBottom: 0 }}>{exercise.name}</h4>
-                            {exercise.videoUrl && (
+                            {(exercise.videoUrl || getExerciseVideo(exercise.name)) && (
                                 <a
-                                    href={exercise.videoUrl}
+                                    href={getExerciseVideo(exercise.name, exercise.videoUrl)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1 text-primary"
