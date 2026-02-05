@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WorkoutCard from '../components/WorkoutCard';
-import WorkoutCard from '../components/WorkoutCard';
+
 import { FolderOpen, Zap, RefreshCw, Footprints, Dumbbell } from 'lucide-react';
 import { generateRoutine } from '../utils/routineGenerator';
 import { generateRoutine } from '../utils/routineGenerator';
