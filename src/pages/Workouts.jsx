@@ -4,7 +4,7 @@ import WorkoutCard from '../components/WorkoutCard';
 
 import { FolderOpen, Zap, RefreshCw, Footprints, Dumbbell } from 'lucide-react';
 import { generateRoutine } from '../utils/routineGenerator';
-import { generateRoutine } from '../utils/routineGenerator';
+
 import { workoutsDetails } from '../data/workouts';
 
 const Workouts = () => {
