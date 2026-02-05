@@ -78,59 +78,60 @@ const WorkoutDetail = () => {
             <div className="flex flex-col gap-4">
                 {workoutData.exercises.map((exercise, index) => (
                     <div key={index} className="card animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                        <div className="flex justify-between items-start" style={{ marginBottom: '0.5rem' }}>
-                            <h4 style={{ marginBottom: 0 }}>{exercise.name}</h4>
-                            {(exercise.videoUrl || getExerciseVideo(exercise.name)) && (
-                                <a
-                                    href={getExerciseVideo(exercise.name, exercise.videoUrl)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-primary"
-                                    style={{ fontSize: '0.875rem', textDecoration: 'none' }}
-                                >
-                                    <PlayCircle size={20} />
-                                    <span style={{ fontWeight: 'bold' }}>Ver Video</span>
-                                </a>
-                            )}
-                        </div>
+                        <h4 style={{ marginBottom: '0.5rem' }}>{exercise.name}</h4>
 
-                        {/* Info de Músculos y Beneficios */}
-                        <div style={{ marginBottom: '0.75rem', fontSize: '0.85rem', position: 'relative' }}>
-                            <p className="flex items-center gap-1 text-accent" style={{ marginBottom: '0.25rem' }}>
-                                <span style={{ fontWeight: 600 }}>Zona:</span>
-                                <span
-                                    className="cursor-pointer underline decoration-dotted"
-                                    style={{ position: 'relative' }}
-                                    onMouseEnter={() => setHoveredMuscle(exercise.muscles)}
-                                    onMouseLeave={() => setHoveredMuscle(null)}
-                                >
-                                    {exercise.muscles}
-                                    {/* Popover de Músculos */}
-                                    {hoveredMuscle === exercise.muscles && (
-                                        <div
-                                            className="animate-fade-in card"
-                                            style={{
-                                                position: 'absolute',
-                                                bottom: '100%',
-                                                left: '50%',
-                                                transform: 'translateX(-50%)',
-                                                zIndex: 50,
-                                                padding: '1rem',
-                                                width: '300px',
-                                                boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
-                                                marginBottom: '0.5rem',
-                                                pointerEvents: 'none' // Para que no parpadee al moverse
-                                            }}
-                                        >
-                                            <h5 style={{ textAlign: 'center', marginBottom: '0.5rem', color: 'var(--color-text-primary)' }}>Músculos Trabajados</h5>
-                                            <BodyMap highlight={exercise.muscles} />
-                                        </div>
-                                    )}
-                                </span>
-                            </p>
-                            <p className="text-muted" style={{ fontStyle: 'italic' }}>
-                                "{exercise.benefits}"
-                            </p>
+                        {/* Grid de Contenido: Info | Ilustración | Video */}
+                        <div className="grid grid-cols-[1fr_auto_auto] gap-4 items-center mb-3">
+                            {/* 1. Descripción (Izq) */}
+                            <div style={{ fontSize: '0.85rem' }}>
+                                <p className="flex items-center gap-1 text-accent mb-1">
+                                    <span style={{ fontWeight: 600 }}>Zona:</span>
+                                    <span
+                                        className="cursor-pointer underline decoration-dotted relative"
+                                        onMouseEnter={() => setHoveredMuscle(exercise.muscles)}
+                                        onMouseLeave={() => setHoveredMuscle(null)}
+                                    >
+                                        {exercise.muscles}
+                                        {hoveredMuscle === exercise.muscles && (
+                                            <div className="animate-fade-in card absolute bottom-full left-1/2 -translate-x-1/2 z-50 p-4 w-[300px] shadow-2xl mb-2 pointer-events-none">
+                                                <h5 className="text-center mb-2 text-white">Músculos Trabajados</h5>
+                                                <BodyMap highlight={exercise.muscles} />
+                                            </div>
+                                        )}
+                                    </span>
+                                </p>
+                                <p className="text-muted italic text-xs leading-relaxed">
+                                    "{exercise.benefits}"
+                                </p>
+                            </div>
+
+                            {/* 2. Ilustración (Centro) */}
+                            {exercise.illustration && (
+                                <div className="flex justify-center">
+                                    <div className="bg-white p-1 rounded-lg shadow-sm" style={{ width: '80px', height: '80px' }}>
+                                        <img
+                                            src={exercise.illustration}
+                                            alt={exercise.name}
+                                            className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all"
+                                        />
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* 3. Video y Datos (Derecha) */}
+                            <div className="flex flex-col items-end gap-2">
+                                {(exercise.videoUrl || getExerciseVideo(exercise.name)) && (
+                                    <a
+                                        href={getExerciseVideo(exercise.name, exercise.videoUrl)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="btn btn-sm bg-[var(--color-bg)] border border-[var(--color-primary)] text-primary hover:bg-[var(--color-primary)] hover:text-black transition-colors"
+                                        style={{ textDecoration: 'none' }}
+                                    >
+                                        <PlayCircle size={18} />
+                                    </a>
+                                )}
+                            </div>
                         </div>
 
                         <div className="flex justify-between text-muted" style={{
