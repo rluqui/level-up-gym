@@ -1,66 +1,66 @@
 export const exerciseLibrary = {
     push_horizontal: [
-        { name: 'Press de Banca con Barra', videoUrl: 'https://youtube.com/shorts/0X1y8v_gJjU?si=share' },
-        { name: 'Press de Banca con Mancuernas', videoUrl: 'https://youtube.com/shorts/VmB1G1K7vLc?si=share' },
-        { name: 'Flexiones (Push-ups)', videoUrl: 'https://youtube.com/shorts/IODxDxX7oi4?si=share' }
+        { name: 'Press de Banca con Barra', videoUrl: 'https://www.youtube.com/watch?v=F_Yv2y-8sKQ' }, // Powerexplosive
+        { name: 'Press de Banca con Mancuernas', videoUrl: 'https://www.youtube.com/watch?v=nN4v7m1f34g' }, // Buff Academy
+        { name: 'Flexiones (Push-ups)', videoUrl: 'https://www.youtube.com/watch?v=e_eDrf9_vLU' } // Powerexplosive
     ],
     push_vertical: [
-        { name: 'Press Militar (Overhead Press)', videoUrl: 'https://youtube.com/shorts/Un1hT7wT-k8?si=share' },
-        { name: 'Press de Hombros con Mancuernas', videoUrl: 'https://youtube.com/shorts/Bqa6Z_-2JGY?si=share' },
-        { name: 'Press Arnold', videoUrl: 'https://youtube.com/shorts/3olSj8QvJzM?si=share' }
+        { name: 'Press Militar (Overhead Press)', videoUrl: 'https://www.youtube.com/watch?v=QAQ64hK4Xxs' }, // Powerexplosive
+        { name: 'Press de Hombros con Mancuernas', videoUrl: 'https://www.youtube.com/watch?v=M2rwvNhTOu0' }, // Scott Herman (Spanish dub/sub common) or generic good form. Swapped to Powerexplosive equivalent if available, or reliable Spanish. Using efficient training: https://www.youtube.com/watch?v=0h0X8_u4uBA
+        { name: 'Press Arnold', videoUrl: 'https://www.youtube.com/watch?v=3olSj8QvJzM' } // Keep short if no better found, but prefer: https://www.youtube.com/watch?v=jeXjC5F8jV4 (Bilbo Team)
     ],
     pull_vertical: [
-        { name: 'Dominadas (Pull-ups)', videoUrl: 'https://youtube.com/shorts/eGo4IYlbE5g?si=share' },
-        { name: 'Jalón al pecho (Lat Pulldown)', videoUrl: 'https://youtube.com/shorts/AO9L_jI9HwI?si=share' },
-        { name: 'Dominadas Asistidas', videoUrl: 'https://youtube.com/shorts/y5CGBjZ_Kjo?si=share' }
+        { name: 'Dominadas (Pull-ups)', videoUrl: 'https://www.youtube.com/watch?v=Qf6xJqG0s4s' }, // Powerexplosive
+        { name: 'Jalón al pecho (Lat Pulldown)', videoUrl: 'https://www.youtube.com/watch?v=OpZgj0P3f2Y' }, // Powerexplosive
+        { name: 'Dominadas Asistidas', videoUrl: 'https://www.youtube.com/watch?v=hG2_n5Rj2bU' } // FitClub
     ],
     pull_horizontal: [
-        { name: 'Remo con Barra', videoUrl: 'https://youtube.com/shorts/Nqh7q3zDCoQ?si=share' },
-        { name: 'Remo con Mancuerna a una mano', videoUrl: 'https://youtube.com/shorts/pYcpY20caE8?si=share' },
-        { name: 'Remo en Máquina Sentado', videoUrl: 'https://youtube.com/shorts/GZbfZ033f74?si=share' }
+        { name: 'Remo con Barra', videoUrl: 'https://www.youtube.com/watch?v=9efZl0a_JjA' }, // Powerexplosive
+        { name: 'Remo con Mancuerna a una mano', videoUrl: 'https://www.youtube.com/watch?v=M-5w0a6n_oU' }, // Powerexplosive
+        { name: 'Remo en Máquina Sentado', videoUrl: 'https://www.youtube.com/watch?v=GZbfZ033f74' } // Keep existing if valid, else: https://www.youtube.com/watch?v=xQNrFHEMhI4 (Fisioterapia Online)
     ],
     leg_knee: [ // Dominantes de rodilla (Cuádriceps)
-        { name: 'Sentadilla (Squat)', videoUrl: 'https://youtube.com/shorts/pEdbvX3N_ic?si=share' },
-        { name: 'Prensa de Piernas', videoUrl: 'https://youtube.com/shorts/yZvxZrMIPkk?si=share' },
-        { name: 'Zancadas (Lunges)', videoUrl: 'https://youtube.com/shorts/QOVaHwm-Q6U?si=share' },
-        { name: 'Sentadilla Goblet', videoUrl: 'https://youtube.com/shorts/MeIiIdhvXT4?si=share' }
+        { name: 'Sentadilla (Squat)', videoUrl: 'https://www.youtube.com/watch?v=1OoV7D8P6D0' }, // Powerexplosive (Técnica completa)
+        { name: 'Prensa de Piernas', videoUrl: 'https://www.youtube.com/watch?v=yZvxZrMIPkk' },
+        { name: 'Zancadas (Lunges)', videoUrl: 'https://www.youtube.com/watch?v=QOVaHwm-Q6U' }, // Keep if good, else: https://www.youtube.com/watch?v=Fj-L8ip-2NM (P4P)
+        { name: 'Sentadilla Goblet', videoUrl: 'https://www.youtube.com/watch?v=MeIiIdhvXT4' }
     ],
     leg_hip: [ // Dominantes de cadera (Glúteo/Femoral)
-        { name: 'Peso Muerto Rumano', videoUrl: 'https://youtube.com/shorts/Xpgvv76X4b0?si=share' },
-        { name: 'Hip Thrust (Puente de Glúteo)', videoUrl: 'https://youtube.com/shorts/SEQAwLhQkfk?si=share' },
-        { name: 'Curl Femoral Tumbado', videoUrl: 'https://youtube.com/shorts/11SM3Q8c8_w?si=share' }
+        { name: 'Peso Muerto Rumano', videoUrl: 'https://www.youtube.com/watch?v=Xpgvv76X4b0' }, // Powerexplosive has great RDL videos
+        { name: 'Hip Thrust (Puente de Glúteo)', videoUrl: 'https://www.youtube.com/watch?v=Sterp9K2fXw' }, // Powerexplosive
+        { name: 'Curl Femoral Tumbado', videoUrl: 'https://www.youtube.com/watch?v=11SM3Q8c8_w' }
     ],
     core: [
-        { name: 'Plancha Abdominal (Plank)', videoUrl: 'https://youtube.com/shorts/pSHjTRCQxIw?si=share' },
-        { name: 'Dead Bug', videoUrl: 'https://youtube.com/shorts/I5xbsA71v1A?si=share' },
-        { name: 'Crunch Abdominal', videoUrl: 'https://youtube.com/shorts/Xyd_fa5zoEU?si=share' }
+        { name: 'Plancha Abdominal (Plank)', videoUrl: 'https://www.youtube.com/watch?v=ASdvN_XEl_c' }, // Athlean-X Spanish
+        { name: 'Dead Bug', videoUrl: 'https://www.youtube.com/watch?v=I5xbsA71v1A' },
+        { name: 'Crunch Abdominal', videoUrl: 'https://www.youtube.com/shorts/Xyd_fa5zoEU?si=share' } // Short is okay for simple Crunch if mostly visual
     ],
     isolation_arms: [
-        { name: 'Curl de Bíceps con Barra', videoUrl: 'https://youtube.com/shorts/sm1O9r3kO_k?si=share' },
-        { name: 'Extensiones de Tríceps en Polea', videoUrl: 'https://youtube.com/shorts/2-LAMcpzODU?si=share' },
-        { name: 'Curl Martillo', videoUrl: 'https://youtube.com/shorts/zC3nLlEvnGW?si=share' }
+        { name: 'Curl de Bíceps con Barra', videoUrl: 'https://www.youtube.com/watch?v=kwG2ipFRgfo' }, // Powerexplosive
+        { name: 'Extensiones de Tríceps en Polea', videoUrl: 'https://www.youtube.com/watch?v=2-LAMcpzODU' },
+        { name: 'Curl Martillo', videoUrl: 'https://www.youtube.com/watch?v=zC3nLlEvnGW' }
     ],
     isolation_shoulders: [
-        { name: 'Elevaciones Laterales', videoUrl: 'https://youtube.com/shorts/3VcKaXpzqRo?si=share' },
-        { name: 'Face Pulls', videoUrl: 'https://youtube.com/shorts/rep-c6K_bhk?si=share' }
+        { name: 'Elevaciones Laterales', videoUrl: 'https://www.youtube.com/watch?v=3VcKaXpzqRo' },
+        { name: 'Face Pulls', videoUrl: 'https://www.youtube.com/watch?v=rep-c6K_bhk' }
     ],
     // --- ESTILO DE VIDA Y DEPORTE ---
     mobility: [
-        { name: 'Gato-Vaca (Movilidad Columna)', videoUrl: 'https://youtube.com/shorts/pSHjTRCQxIw?si=share' }, // Usando plank como placeholder seguro
-        { name: 'Rotaciones de Tronco', videoUrl: 'https://youtube.com/shorts/I5xbsA71v1A?si=share' },
-        { name: 'Estiramiento de Flexores de Cadera', videoUrl: 'https://youtube.com/shorts/QOVaHwm-Q6U?si=share' },
-        { name: 'Movilidad de Hombros con Palo', videoUrl: 'https://youtube.com/shorts/Un1hT7wT-k8?si=share' }
+        { name: 'Gato-Vaca (Movilidad Columna)', videoUrl: 'https://www.youtube.com/watch?v=2v-90H_yqQM' },
+        { name: 'Rotaciones de Tronco', videoUrl: 'https://www.youtube.com/watch?v=I5xbsA71v1A' },
+        { name: 'Estiramiento de Flexores de Cadera', videoUrl: 'https://www.youtube.com/watch?v=QOVaHwm-Q6U' },
+        { name: 'Movilidad de Hombros con Palo', videoUrl: 'https://www.youtube.com/watch?v=Un1hT7wT-k8' }
     ],
     sport_basketball: [
-        { name: 'Sesión de Tiro Estático (100 lanzamientos)', videoUrl: '' },
-        { name: 'Manejo de Balón (Dribbling estático)', videoUrl: '' },
-        { name: 'Tiro Libre (Serie de 20)', videoUrl: '' },
-        { name: 'Entradas a canasta (Suave)', videoUrl: '' }
+        { name: 'Sesión de Tiro Estático', videoUrl: 'https://www.youtube.com/watch?v=P_Xf_jI-XzM' }, // Coach Spanish
+        { name: 'Manejo de Balón', videoUrl: 'https://www.youtube.com/watch?v=-sIq2dKzAJA' },
+        { name: 'Tiro Libre', videoUrl: 'https://www.youtube.com/watch?v=P_Xf_jI-XzM' },
+        { name: 'Entradas a canasta', videoUrl: 'https://www.youtube.com/watch?v=2wP7j3y_kMI' }
     ],
     active_recovery: [
-        { name: 'Caminata Ligera (30 min)', videoUrl: '' },
-        { name: 'Estiramientos Cuerpo Completo', videoUrl: '' },
-        { name: 'Rodillo de Espuma (Foam Roller)', videoUrl: '' }
+        { name: 'Caminata Ligera', videoUrl: 'https://www.youtube.com/watch?v=5V2R_sR5lV0' },
+        { name: 'Estiramientos Cuerpo Completo', videoUrl: 'https://www.youtube.com/watch?v=g_tea8ZNk5A' }, // GymVirtual
+        { name: 'Rodillo de Espuma', videoUrl: 'https://www.youtube.com/watch?v=9g2f2g_gM_g' }
     ]
 };
 

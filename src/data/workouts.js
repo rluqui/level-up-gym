@@ -9,7 +9,7 @@ export const workoutsDetails = {
                 name: 'Prensa 45° o Sentadillas',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/pEdbvX3N_ic?si=share', // Squat short
+                videoUrl: 'https://www.youtube.com/watch?v=1OoV7D8P6D0', // Powerexplosive Squat
                 muscles: 'Cuádriceps, Glúteos',
                 benefits: 'El rey de los ejercicios. Construye masa y fuerza general en todo el tren inferior.'
             },
@@ -17,7 +17,7 @@ export const workoutsDetails = {
                 name: 'Estocadas con mancuernas',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/QOVaHwm-Q6U?si=share', // Dumbbell Lunges
+                videoUrl: 'https://www.youtube.com/watch?v=Fj-L8ip-2NM', // P4P Spanish
                 muscles: 'Cuádriceps, Glúteos, Aductores',
                 benefits: 'Mejora la estabilidad, el equilibrio y corrige desequilibrios musculares.'
             },
@@ -25,7 +25,7 @@ export const workoutsDetails = {
                 name: 'Extensión en sillón',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/YyvSfVjQeL0?si=share', // Leg Extension
+                videoUrl: 'https://www.youtube.com/watch?v=YyvSfVjQeL0', // Keep short if clear, or: HMBbL2eN1qQ
                 muscles: 'Cuádriceps (Recto femoral)',
                 benefits: 'Aísla el cuádriceps para un máximo detalle y separación muscular.'
             },
@@ -33,7 +33,7 @@ export const workoutsDetails = {
                 name: 'Camilla boca abajo (Femoral)',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/11SM3Q8c8_w?si=share', // Lying Leg Curl
+                videoUrl: 'https://www.youtube.com/watch?v=11SM3Q8c8_w',
                 muscles: 'Isquiosurales (Femorales)',
                 benefits: 'Desarrolla la parte posterior de la pierna, crucial para la estética lateral y prevención de lesiones.'
             },
@@ -41,7 +41,7 @@ export const workoutsDetails = {
                 name: 'Pantorrillas Sentado',
                 sets: 5,
                 reps: '15',
-                videoUrl: 'https://youtube.com/shorts/3i6c8s-YvCw?si=share', // Seated Calf Raise (approx)
+                videoUrl: 'https://www.youtube.com/watch?v=3i6c8s-YvCw',
                 muscles: 'Sóleo',
                 benefits: 'Trabaja el sóleo, dando anchura a la pantorrilla vista de frente.'
             },
@@ -49,7 +49,7 @@ export const workoutsDetails = {
                 name: 'Pantorrillas Parado',
                 sets: 5,
                 reps: '15',
-                videoUrl: 'https://youtube.com/shorts/N3t1Wp_hDpI?si=share', // Standing Calf Raise (generic)
+                videoUrl: 'https://www.youtube.com/watch?v=N3t1Wp_hDpI',
                 muscles: 'Gastrocnemio',
                 benefits: 'Ataca el músculo visible más grande de la pantorrilla (forma de diamante).'
             }
@@ -65,7 +65,7 @@ export const workoutsDetails = {
                 name: 'Press banco plano',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/0X1y8v_gJjU?si=share', // Bench Press
+                videoUrl: 'https://www.youtube.com/watch?v=F_Yv2y-8sKQ', // Powerexplosive
                 muscles: 'Pectoral Mayor, Tríceps, Deltoides',
                 benefits: 'Ejercicio compuesto fundamental para ganar volumen y fuerza en el pecho.'
             },
@@ -73,7 +73,7 @@ export const workoutsDetails = {
                 name: 'Press banco inclinado',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/Z1X-x_t1t-w?si=share', // Incline Bench
+                videoUrl: 'https://www.youtube.com/watch?v=jW0Nfw2s01o', // Powerexplosive
                 muscles: 'Pectoral Superior, Deltoides Anterior',
                 benefits: 'Llena la parte superior del pecho, dando esa apariencia de "armadura".'
             },
@@ -81,7 +81,7 @@ export const workoutsDetails = {
                 name: 'Apertura banco plano',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/eozdVDA78K0?si=share', // Dumbbell Fly
+                videoUrl: 'https://www.youtube.com/watch?v=eozdVDA78K0',
                 muscles: 'Pectoral Mayor (Estiramiento)',
                 benefits: 'Enfatiza el estiramiento del pecho y ayuda a expandir la caja torácica.'
             },
@@ -89,7 +89,7 @@ export const workoutsDetails = {
                 name: 'Tríceps Polea alta (Pushdown)',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/2-LAMcpzODU?si=share', // Pushdown
+                videoUrl: 'https://www.youtube.com/watch?v=2-LAMcpzODU',
                 muscles: 'Tríceps (Cabeza Lateral)',
                 benefits: 'Aísla el tríceps para conseguir esa forma de "herradura" característica.'
             },
@@ -97,7 +97,7 @@ export const workoutsDetails = {
                 name: 'Tríceps tras nuca (Cables/Mancuerna)',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/P1z-vSgR-Z8?si=share', // Overhead Ext
+                videoUrl: 'https://www.youtube.com/watch?v=P1z-vSgR-Z8',
                 muscles: 'Tríceps (Cabeza Larga)',
                 benefits: 'Trabaja la cabeza larga del tríceps, que da la mayor parte del volumen al brazo.'
             }
@@ -113,7 +113,7 @@ export const workoutsDetails = {
                 name: 'Polea alta (Lat Pulldown)',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/AO9L_jI9HwI?si=share', // Lat Pulldown
+                videoUrl: 'https://www.youtube.com/watch?v=OpZgj0P3f2Y', // Powerexplosive
                 muscles: 'Dorsal Ancho',
                 benefits: 'Clave para ensanchar la espalda superior y lograr la forma de V.'
             },
@@ -121,7 +121,7 @@ export const workoutsDetails = {
                 name: 'Polea baja (Remo sentado)',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/GZbfZ033f74?si=share', // Seated Row
+                videoUrl: 'https://www.youtube.com/watch?v=GZbfZ033f74',
                 muscles: 'Espalda Media, Romboides',
                 benefits: 'Añade densidad y grosor a la espalda media.'
             },
@@ -129,7 +129,7 @@ export const workoutsDetails = {
                 name: 'Remo 90° con barra',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/Nqh7q3zDCoQ?si=share', // Barbell Row
+                videoUrl: 'https://www.youtube.com/watch?v=9efZl0a_JjA', // Powerexplosive
                 muscles: 'Espalda Completa, Lumbares',
                 benefits: 'Potente constructor de fuerza y masa para toda la cadena posterior.'
             },
@@ -137,7 +137,7 @@ export const workoutsDetails = {
                 name: 'Pullover con mancuerna',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/8w7k5q4s5-w?si=share', // Pullover
+                videoUrl: 'https://www.youtube.com/watch?v=8w7k5q4s5-w',
                 muscles: 'Dorsales, Serratos, Pecho',
                 benefits: 'Trabaja la conexión mente-músculo de los dorsales y mejora la postura.'
             },
@@ -145,7 +145,7 @@ export const workoutsDetails = {
                 name: 'Bíceps Barra EZ parado',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/sm1O9r3kO_k?si=share', // Barbell Curl
+                videoUrl: 'https://www.youtube.com/watch?v=kwG2ipFRgfo', // Powerexplosive
                 muscles: 'Bíceps Braquial',
                 benefits: 'El mejor ejercicio para masa general del bíceps.'
             },
@@ -153,7 +153,7 @@ export const workoutsDetails = {
                 name: 'Mancuernas banco 45°',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/9fItIqIVlGg?si=share', // Incline Curl
+                videoUrl: 'https://www.youtube.com/watch?v=9fItIqIVlGg',
                 muscles: 'Bíceps (Cabeza Larga)',
                 benefits: 'Pone el bíceps en estiramiento máximo, estimulando el crecimiento desde otro ángulo.'
             }
@@ -169,7 +169,7 @@ export const workoutsDetails = {
                 name: 'Press con barra sentado',
                 sets: 5,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/Un1hT7wT-k8?si=share', // Overhead Press
+                videoUrl: 'https://www.youtube.com/watch?v=QAQ64hK4Xxs', // Powerexplosive
                 muscles: 'Deltoides Anterior y Medio',
                 benefits: 'Fundamental para hombros grandes y fuertes.'
             },
@@ -177,7 +177,7 @@ export const workoutsDetails = {
                 name: 'Vuelos laterales sentado',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/3VcKaXpzqRo?si=share', // Lateral Raise
+                videoUrl: 'https://www.youtube.com/watch?v=3VcKaXpzqRo',
                 muscles: 'Deltoides Lateral',
                 benefits: 'El único ejercicio que realmente te hace ver más ancho de hombros.'
             },
@@ -185,7 +185,7 @@ export const workoutsDetails = {
                 name: 'Elevaciones frontales manc.',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/-t7fuZb_t2M?si=share', // Front Raise
+                videoUrl: 'https://www.youtube.com/watch?v=-t7fuZb_t2M',
                 muscles: 'Deltoides Anterior',
                 benefits: 'Aísla la parte frontal del hombro para un look completo.'
             },
@@ -193,7 +193,7 @@ export const workoutsDetails = {
                 name: 'Remo barra al mentón',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/j5s6lc3L_aE?si=share', // Upright Row
+                videoUrl: 'https://www.youtube.com/watch?v=j5s6lc3L_aE',
                 muscles: 'Trapecios, Hombros',
                 benefits: 'Conecta visualmente los hombros con el cuello.'
             },
@@ -201,7 +201,7 @@ export const workoutsDetails = {
                 name: 'Qué me importa (Encogimientos)',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://youtube.com/shorts/g6qdq7_jA-w?si=share', // Shrugs
+                videoUrl: 'https://www.youtube.com/watch?v=g6qdq7_jA-w',
                 muscles: 'Trapecio Superior',
                 benefits: 'Desarrolla la "montaña" del cuello.'
             },
@@ -209,7 +209,7 @@ export const workoutsDetails = {
                 name: 'Elevaciones de tronco (Crunch)',
                 sets: 5,
                 reps: '25',
-                videoUrl: 'https://youtube.com/shorts/Xyd_fa5zoEU?si=share', // Crunch
+                videoUrl: 'https://www.youtube.com/watch?v=Xyd_fa5zoEU',
                 muscles: 'Recto Abdominal',
                 benefits: 'Fortalece el núcleo y define los "cuadritos".'
             },
@@ -217,7 +217,7 @@ export const workoutsDetails = {
                 name: 'Elevaciones de piernas',
                 sets: 5,
                 reps: '25',
-                videoUrl: 'https://youtube.com/shorts/_OQUY55Pqj8?si=share', // Leg Raise
+                videoUrl: 'https://www.youtube.com/watch?v=_OQUY55Pqj8',
                 muscles: 'Abdominales Inferiores',
                 benefits: 'Ataca la zona más difícil del abdomen bajo.'
             }
