@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WorkoutCard from '../components/WorkoutCard';
+import { FolderOpen, Zap, RefreshCw } from 'lucide-react';
+import { generateRoutine } from '../utils/routineGenerator';
+import { workoutsDetails } from '../data/workouts';
 
 const Workouts = () => {
     const navigate = useNavigate();
