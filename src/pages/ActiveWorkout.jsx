@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Clock, CheckCircle, Save, PlayCircle } from 'lucide-react';
 import { workoutsDetails } from '../data/workouts';
 
 const ActiveWorkout = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
     const [time, setTime] = useState(0);
     const [isActive, setIsActive] = useState(true);
 
-    const workout = workoutsDetails[id] || workoutsDetails[1];
+    // Prefer data passed via state (AI/Dynamic), fallback to static ID lookup
+    const workout = location.state?.workoutData || workoutsDetails[id] || workoutsDetails[1];
 
     // Estado para el progreso (checkboxes)
     // Estructura: { 'ejercicio-0-set-1': true/false }

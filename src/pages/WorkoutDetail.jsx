@@ -60,7 +60,7 @@ const WorkoutDetail = () => {
             <button
                 className="btn btn-primary w-full shadow-lg"
                 style={{ marginBottom: '2rem', padding: '1rem' }}
-                onClick={() => navigate(`/workouts/${workoutData.id}/active`)}
+                onClick={() => navigate(`/workouts/${workoutData.id}/active`, { state: { workoutData } })}
             >
                 <Flame size={20} style={{ display: 'inline', marginRight: '8px' }} />
                 Iniciar Entrenamiento
@@ -116,7 +116,7 @@ const WorkoutDetail = () => {
 
             <div style={{ marginTop: '2rem' }}>
                 <button
-                    onClick={() => navigate(`/workouts/${id}/active`)}
+                    onClick={() => navigate(`/workouts/${id}/active`, { state: { workoutData } })}
                     className="btn btn-primary w-full flex justify-center gap-2"
                 >
                     <Flame size={20} />
