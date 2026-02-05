@@ -1,0 +1,236 @@
+import React, { useState } from 'react';
+import { getFrequencyFeedback } from '../utils/aiCoach';
+import ProfileHeader from '../components/ProfileHeader';
+import StatsChart from '../components/StatsChart';
+import SettingsMenu from '../components/SettingsMenu';
+import FeedbackModal from '../components/FeedbackModal';
+import { MessageSquare, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
+const Profile = () => {
+    const { user: authUser, signOut } = useAuth();
+    const navigate = useNavigate();
+
+    // Estado del Perfil
+    const [profile, setProfile] = useState(() => {
+        return JSON.parse(localStorage.getItem('levelUp_userProfile')) || {
+            level: 'beginner',
+            goal: 'strength',
+            days: 3,
+            age: 30,
+            sport: 'none',
+            configured: false
+        };
+    });
+
+    const [isEditing, setIsEditing] = useState(!profile.configured);
+    const [tempProfile, setTempProfile] = useState(profile);
+    const [showFeedback, setShowFeedback] = useState(false);
+
+    const user = {
+        name: 'Atleta Level Up',
+        level: profile.age > 50 ? 57 : (profile.level === 'beginner' ? 1 : 15),
+        xp: 2450,
+        maxXp: 3000
+    };
+
+    const saveProfile = () => {
+        const finalProfile = { ...tempProfile, configured: true };
+        setProfile(finalProfile);
+        localStorage.setItem('levelUp_userProfile', JSON.stringify(finalProfile));
+        setIsEditing(false);
+    };
+
+    const handleDaySelection = (days) => {
+        setTempProfile({ ...tempProfile, days });
+    };
+
+    const handleAgeChange = (e) => {
+        setTempProfile({ ...tempProfile, age: parseInt(e.target.value) || 0 });
+    };
+
+    const frequencyFeedback = getFrequencyFeedback(tempProfile.level, tempProfile.days);
+
+    return (
+        <div style={{ paddingBottom: '7rem' }}>
+            {!isEditing ? (
+                <>
+                    {!authUser ? (
+                        <div
+                            className="bg-gray-800 p-4 mb-4 rounded-lg flex justify-between items-center border border-gray-700"
+                            onClick={() => navigate('/login')}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <div>
+                                <h4 className="text-white font-bold text-sm">Modo Invitado 👤</h4>
+                                <p className="text-xs text-muted">Inicia sesión para guardar en la nube.</p>
+                            </div>
+                            <button className="btn btn-sm btn-primary">Login</button>
+                        </div>
+                    ) : (
+                        <div className="flex justify-between items-center px-2 mb-2">
+                            <span className="text-xs text-green-400 font-mono">● Conectado: {authUser.email}</span>
+                        </div>
+                    )}
+
+                    <ProfileHeader {...user} />
+                    <div className="card" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
+                        <div className="flex justify-between items-center">
+                            <h3>Tu Plan Integral</h3>
+                            <button className="btn btn-secondary" onClick={() => setIsEditing(true)}>Editar</button>
+                        </div>
+                        <div className="flex gap-4 mt-2 overflow-x-auto">
+                            <div className="flex flex-col min-w-[80px]">
+                                <span className="text-muted text-sm">Edad</span>
+                                <span className="font-bold">{profile.age} años</span>
+                            </div>
+                            <div className="flex flex-col min-w-[80px]">
+                                <span className="text-muted text-sm">Deporte</span>
+                                <span className="font-bold capitalize">{profile.sport === 'none' ? 'Ninguno' : profile.sport}</span>
+                            </div>
+                            <div className="flex flex-col min-w-[80px]">
+                                <span className="text-muted text-sm">Frecuencia</span>
+                                <span className="font-bold">{profile.days} días/sem</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style={{ marginBottom: '1rem' }}>Actividad Reciente</h3>
+                    <StatsChart data={[
+                        { label: 'L', ep: 20 }, { label: 'M', ep: 40 }, { label: 'X', ep: 10 },
+                        { label: 'J', ep: 80 }, { label: 'V', ep: 50 }, { label: 'S', ep: 90 }, { label: 'D', ep: 0 }
+                    ]} />
+
+                    <h3 style={{ marginBottom: '1rem', marginTop: '2rem' }}>Ajustes</h3>
+
+                    <button
+                        className="btn w-full flex items-center justify-between"
+                        style={{
+                            marginBottom: '1rem',
+                            backgroundColor: 'var(--color-bg-secondary)',
+                            border: '1px solid var(--color-primary)',
+                            padding: '1rem'
+                        }}
+                        onClick={() => setShowFeedback(true)}
+                    >
+                        <div className="flex items-center gap-3">
+                            <div className="p-2 rounded-full bg-primary/20 text-primary">
+                                <MessageSquare size={20} />
+                            </div>
+                            <div className="text-left">
+                                <span className="block font-bold">Enviar Sugerencia</span>
+                                <span className="text-xs text-muted">Ayúdanos a mejorar la app</span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <SettingsMenu />
+
+                    {authUser && (
+                        <button
+                            className="btn btn-danger w-full mt-4 flex justify-center items-center gap-2"
+                            onClick={() => signOut()}
+                        >
+                            <LogOut size={18} />
+                            Cerrar Sesión
+                        </button>
+                    )}
+                </>
+            ) : (
+                <div className="animate-fade-in">
+                    <h2 style={{ marginBottom: '1.5rem' }}>Perfil Integral 🧬</h2>
+
+                    <div className="card" style={{ marginBottom: '1rem' }}>
+                        <h3 className="mb-2">Datos Personales</h3>
+                        <label className="block text-sm text-muted mb-1">Tu Edad (Importante para salud articular)</label>
+                        <input
+                            type="number"
+                            className="w-full p-2 rounded bg-[var(--color-bg-tertiary)] border border-[var(--color-bg-secondary)] text-white"
+                            value={tempProfile.age}
+                            onChange={handleAgeChange}
+                            placeholder="Ej: 57"
+                        />
+                    </div>
+
+                    <div className="card" style={{ marginBottom: '1rem' }}>
+                        <h3 className="mb-2">¿Practicas algún deporte?</h3>
+                        <div className="grid grid-cols-2 gap-2">
+                            <button className={`btn ${tempProfile.sport === 'none' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'none' })}>Solo Gym</button>
+                            <button className={`btn ${tempProfile.sport === 'basketball' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'basketball' })}>Básquet 🏀</button>
+                            <button className={`btn ${tempProfile.sport === 'football' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'football' })}>Fútbol ⚽</button>
+                            <button className={`btn ${tempProfile.sport === 'running' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'running' })}>Running 🏃</button>
+                        </div>
+                    </div>
+
+                    <div className="card" style={{ marginBottom: '1rem' }}>
+                        <h3 className="mb-2">Experiencia en Pesas</h3>
+                        <div className="flex gap-2">
+                            <button
+                                className={`btn ${tempProfile.level === 'beginner' ? 'btn-primary' : 'btn-secondary'}`}
+                                onClick={() => setTempProfile({ ...tempProfile, level: 'beginner' })}
+                                style={{ flex: 1 }}
+                            >
+                                Principiante
+                            </button>
+                            <button
+                                className={`btn ${tempProfile.level === 'intermediate' ? 'btn-primary' : 'btn-secondary'}`}
+                                onClick={() => setTempProfile({ ...tempProfile, level: 'intermediate' })}
+                                style={{ flex: 1 }}
+                            >
+                                Intermedio
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="card" style={{ marginBottom: '1rem' }}>
+                        <h3 className="mb-2">2. ¿Tu objetivo principal?</h3>
+                        <div className="flex gap-2">
+                            <button
+                                className={`btn ${tempProfile.goal === 'strength' ? 'btn-primary' : 'btn-secondary'}`}
+                                onClick={() => setTempProfile({ ...tempProfile, goal: 'strength' })}
+                                style={{ flex: 1 }}
+                            >
+                                Fuerza 🏋️
+                            </button>
+                            <button
+                                className={`btn ${tempProfile.goal === 'hypertrophy' ? 'btn-primary' : 'btn-secondary'}`}
+                                onClick={() => setTempProfile({ ...tempProfile, goal: 'hypertrophy' })}
+                                style={{ flex: 1 }}
+                            >
+                                Músculo 💪
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="card" style={{ marginBottom: '1rem', border: frequencyFeedback.status === 'warning' ? '1px solid var(--color-danger)' : '1px solid transparent' }}>
+                        <h3 className="mb-2">Días Disponibles (Total)</h3>
+                        <input
+                            type="range"
+                            min="2" max="6"
+                            value={tempProfile.days}
+                            onChange={(e) => handleDaySelection(parseInt(e.target.value))}
+                            style={{ width: '100%', marginBottom: '1rem' }}
+                        />
+                        <div className="text-center font-bold text-xl mb-4">{tempProfile.days} Días</div>
+
+                        <div style={{ backgroundColor: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '0.5rem' }}>
+                            <p className="text-sm mb-3" style={{ color: frequencyFeedback.status === 'warning' ? '#ff6b6b' : 'var(--color-text-primary)' }}>
+                                {frequencyFeedback.message}
+                            </p>
+                            <span className="text-xs text-muted">La AI ajustará la carga según tu edad y deporte.</span>
+                        </div>
+                    </div>
+
+                    <button className="btn btn-primary w-full" style={{ padding: '1rem' }} onClick={saveProfile}>
+                        Generar Plan 360° ✨
+                    </button>
+                </div>
+            )}
+
+            <FeedbackModal isOpen={showFeedback} onClose={() => setShowFeedback(false)} />
+        </div>
+    );
+};
+
+export default Profile;
