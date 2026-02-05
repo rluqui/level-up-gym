@@ -1,4 +1,4 @@
-```javascript
+
 import { getRandomExercise } from '../data/exerciseLibrary';
 
 export const generateRoutine = (profile) => {
@@ -77,32 +77,32 @@ export const generateRoutine = (profile) => {
         // ... (Lógica similar expandida para más días)
         // Por brevedad, aplicamos una lógica simple de "Más Gym" pero manteniendo el día complementario
         routines[currentId] = createSession(currentId++, 'Día 1: Torso (Gym)', 'Fuerza superior.', 'from-red-500 to-orange-600', [
-             { ...getRandomExercise('push_horizontal'), sets: 4, reps: '8' },
-             { ...getRandomExercise('pull_vertical'), sets: 4, reps: '8' }
+            { ...getRandomExercise('push_horizontal'), sets: 4, reps: '8' },
+            { ...getRandomExercise('pull_vertical'), sets: 4, reps: '8' }
         ]);
         routines[currentId] = createSession(currentId++, 'Día 2: Pierna (Gym)', 'Fuerza inferior.', 'from-emerald-500 to-teal-600', [
-             { ...getRandomExercise('leg_knee'), sets: 4, reps: '10' },
-             { ...getRandomExercise('leg_hip'), sets: 3, reps: '12' }
+            { ...getRandomExercise('leg_knee'), sets: 4, reps: '10' },
+            { ...getRandomExercise('leg_hip'), sets: 3, reps: '12' }
         ]);
-        
+
         // El día complementario siempre presente
         if (playsBasketball) {
-             routines[currentId] = createSession(currentId++, 'Día 3: Básquet & Agilidad', 'Cancha.', 'from-orange-400 to-yellow-500', [
+            routines[currentId] = createSession(currentId++, 'Día 3: Básquet & Agilidad', 'Cancha.', 'from-orange-400 to-yellow-500', [
                 { ...getRandomExercise('sport_basketball'), sets: 1, reps: '45 min' }
-             ]);
+            ]);
         } else {
-             routines[currentId] = createSession(currentId++, 'Día 3: Cardio & Core', 'Resistencia.', 'from-blue-400 to-indigo-500', [
+            routines[currentId] = createSession(currentId++, 'Día 3: Cardio & Core', 'Resistencia.', 'from-blue-400 to-indigo-500', [
                 { ...getRandomExercise('active_recovery'), sets: 1, reps: '40 min' }
-             ]);
+            ]);
         }
 
         routines[currentId] = createSession(currentId++, 'Día 4: Full Body (Gym)', 'Recordatorio muscular.', 'from-purple-600 to-pink-500', [
-             { ...getRandomExercise('push_vertical'), sets: 3, reps: '12' },
-             { ...getRandomExercise('pull_horizontal'), sets: 3, reps: '12' },
-             { ...getRandomExercise('leg_knee'), sets: 3, reps: '15' }
+            { ...getRandomExercise('push_vertical'), sets: 3, reps: '12' },
+            { ...getRandomExercise('pull_horizontal'), sets: 3, reps: '12' },
+            { ...getRandomExercise('leg_knee'), sets: 3, reps: '15' }
         ]);
     }
 
     return routines;
 };
-```
+
