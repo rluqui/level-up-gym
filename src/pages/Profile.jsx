@@ -47,10 +47,44 @@ const Profile = () => {
     };
 
     const handleAgeChange = (e) => {
-        setTempProfile({ ...tempProfile, age: parseInt(e.target.value) || 0 });
+        const val = e.target.value;
+        if (val === '') {
+            setTempProfile({ ...tempProfile, age: '' });
+        } else {
+            setTempProfile({ ...tempProfile, age: parseInt(val) });
+        }
     };
 
     const frequencyFeedback = getFrequencyFeedback(tempProfile.level, tempProfile.days);
+
+    // Opciones de configuración
+    const sportsOptions = [
+        { id: 'none', label: 'Solo Gym', icon: '🏋️' },
+        { id: 'basketball', label: 'Básquet', icon: '🏀' },
+        { id: 'football', label: 'Fútbol', icon: '⚽' },
+        { id: 'running', label: 'Running', icon: '🏃' },
+        { id: 'swimming', label: 'Natación', icon: '🏊' },
+        { id: 'cycling', label: 'Ciclismo', icon: '🚴' },
+        { id: 'tennis', label: 'Tenis', icon: '🎾' },
+        { id: 'crossfit', label: 'Crossfit', icon: '🔥' },
+        { id: 'yoga', label: 'Yoga', icon: '🧘' },
+        { id: 'martial_arts', label: 'Artes Marciales', icon: '🥋' }
+    ];
+
+    const levelOptions = [
+        { id: 'beginner', label: 'Principiante' },
+        { id: 'intermediate', label: 'Intermedio' },
+        { id: 'advanced', label: 'Avanzado' }
+    ];
+
+    const goalOptions = [
+        { id: 'weight_loss', label: 'Adelgazar', icon: '🔥' },
+        { id: 'strength', label: 'Fuerza', icon: '🏋️' },
+        { id: 'hypertrophy', label: 'Músculo', icon: '💪' },
+        { id: 'endurance', label: 'Resistencia', icon: '🏃' },
+        { id: 'health', label: 'Salud General', icon: '❤️' },
+        { id: 'mobility', label: 'Movilidad', icon: '🤸' }
+    ];
 
     return (
         <div style={{ paddingBottom: '7rem' }}>
@@ -80,7 +114,7 @@ const Profile = () => {
                             <h3>Tu Plan Integral</h3>
                             <button className="btn btn-secondary" onClick={() => setIsEditing(true)}>Editar</button>
                         </div>
-                        <div className="flex gap-4 mt-2 overflow-x-auto">
+                        <div className="flex gap-4 mt-2 overflow-x-auto pb-2">
                             <div className="flex flex-col min-w-[80px]">
                                 <span className="text-muted text-sm">Edad</span>
                                 <span className="font-bold">{profile.age} años</span>
@@ -156,50 +190,47 @@ const Profile = () => {
                     <div className="card" style={{ marginBottom: '1rem' }}>
                         <h3 className="mb-2">¿Practicas algún deporte?</h3>
                         <div className="grid grid-cols-2 gap-2">
-                            <button className={`btn ${tempProfile.sport === 'none' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'none' })}>Solo Gym</button>
-                            <button className={`btn ${tempProfile.sport === 'basketball' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'basketball' })}>Básquet 🏀</button>
-                            <button className={`btn ${tempProfile.sport === 'football' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'football' })}>Fútbol ⚽</button>
-                            <button className={`btn ${tempProfile.sport === 'running' ? 'btn-primary' : 'btn-secondary'}`} onClick={() => setTempProfile({ ...tempProfile, sport: 'running' })}>Running 🏃</button>
+                            {sportsOptions.map((sport) => (
+                                <button
+                                    key={sport.id}
+                                    className={`btn ${tempProfile.sport === sport.id ? 'btn-primary' : 'btn-secondary'} flex items-center justify-center gap-2`}
+                                    onClick={() => setTempProfile({ ...tempProfile, sport: sport.id })}
+                                    style={{ fontSize: '0.9rem' }}
+                                >
+                                    {sport.label} {sport.icon}
+                                </button>
+                            ))}
                         </div>
                     </div>
 
                     <div className="card" style={{ marginBottom: '1rem' }}>
                         <h3 className="mb-2">Experiencia en Pesas</h3>
                         <div className="flex gap-2">
-                            <button
-                                className={`btn ${tempProfile.level === 'beginner' ? 'btn-primary' : 'btn-secondary'}`}
-                                onClick={() => setTempProfile({ ...tempProfile, level: 'beginner' })}
-                                style={{ flex: 1 }}
-                            >
-                                Principiante
-                            </button>
-                            <button
-                                className={`btn ${tempProfile.level === 'intermediate' ? 'btn-primary' : 'btn-secondary'}`}
-                                onClick={() => setTempProfile({ ...tempProfile, level: 'intermediate' })}
-                                style={{ flex: 1 }}
-                            >
-                                Intermedio
-                            </button>
+                            {levelOptions.map((level) => (
+                                <button
+                                    key={level.id}
+                                    className={`btn ${tempProfile.level === level.id ? 'btn-primary' : 'btn-secondary'}`}
+                                    onClick={() => setTempProfile({ ...tempProfile, level: level.id })}
+                                    style={{ flex: 1 }}
+                                >
+                                    {level.label}
+                                </button>
+                            ))}
                         </div>
                     </div>
 
                     <div className="card" style={{ marginBottom: '1rem' }}>
                         <h3 className="mb-2">2. ¿Tu objetivo principal?</h3>
-                        <div className="flex gap-2">
-                            <button
-                                className={`btn ${tempProfile.goal === 'strength' ? 'btn-primary' : 'btn-secondary'}`}
-                                onClick={() => setTempProfile({ ...tempProfile, goal: 'strength' })}
-                                style={{ flex: 1 }}
-                            >
-                                Fuerza 🏋️
-                            </button>
-                            <button
-                                className={`btn ${tempProfile.goal === 'hypertrophy' ? 'btn-primary' : 'btn-secondary'}`}
-                                onClick={() => setTempProfile({ ...tempProfile, goal: 'hypertrophy' })}
-                                style={{ flex: 1 }}
-                            >
-                                Músculo 💪
-                            </button>
+                        <div className="grid grid-cols-2 gap-2">
+                            {goalOptions.map((goal) => (
+                                <button
+                                    key={goal.id}
+                                    className={`btn ${tempProfile.goal === goal.id ? 'btn-primary' : 'btn-secondary'} flex items-center justify-center gap-2`}
+                                    onClick={() => setTempProfile({ ...tempProfile, goal: goal.id })}
+                                >
+                                    {goal.label} {goal.icon}
+                                </button>
+                            ))}
                         </div>
                     </div>
 
