@@ -7,8 +7,10 @@ import WorkoutDetail from './pages/WorkoutDetail';
 import Nutrition from './pages/Nutrition';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
+import WorkoutDetail from './pages/WorkoutDetail';
 import Admin from './pages/Admin';
 import Community from './pages/Community';
+import RunningMode from './pages/RunningMode';
 import Navigation from './components/BottomNavigation';
 
 function App() {
@@ -27,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/running" element={<RunningMode />} />
           </Routes>
           <Navigation />
         </div>

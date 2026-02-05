@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WorkoutCard from '../components/WorkoutCard';
-import { FolderOpen, Zap, RefreshCw } from 'lucide-react';
+import WorkoutCard from '../components/WorkoutCard';
+import { FolderOpen, Zap, RefreshCw, Footprints, Dumbbell } from 'lucide-react';
+import { generateRoutine } from '../utils/routineGenerator';
 import { generateRoutine } from '../utils/routineGenerator';
 import { workoutsDetails } from '../data/workouts';
 
@@ -33,6 +35,7 @@ const Workouts = () => {
     ];
 
     const [activeTab, setActiveTab] = useState('library'); // 'library' (Importadas) | 'ai' (Sugeridas)
+    const [mode, setMode] = useState('gym'); // 'gym' | 'running'
     const [generatedRoutines, setGeneratedRoutines] = useState([]);
 
     // Cargar perfil
@@ -54,8 +57,32 @@ const Workouts = () => {
     return (
         <div style={{ paddingBottom: '6rem' }}>
             <header style={{ marginBottom: '1.5rem' }}>
-                <h1>Entrenar</h1>
-                <p className="text-muted">Elige tu plan de batalla</p>
+                <h1 className="mb-2">Entrenar</h1>
+
+                {/* Selector de Disciplina */}
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                    <button
+                        className={`card flex flex-col items-center justify-center p-3 transition-all ${mode === 'gym' ? 'border-primary ring-1 ring-primary' : 'opacity-70'}`}
+                        onClick={() => setMode('gym')}
+                    >
+                        <Dumbbell size={24} className={mode === 'gym' ? 'text-primary' : 'text-muted'} />
+                        <span className="font-bold mt-1 text-sm">Gimnasio</span>
+                    </button>
+                    <button
+                        className={`card flex flex-col items-center justify-center p-3 transition-all ${mode === 'running' ? 'border-orange-500 ring-1 ring-orange-500' : 'opacity-70'}`}
+                        onClick={() => {
+                            setMode('running');
+                            navigate('/running'); // Directo por ahora, o mostramos menú intermedio
+                        }}
+                    >
+                        <Footprints size={24} className={mode === 'running' ? 'text-orange-500' : 'text-muted'} />
+                        <span className="font-bold mt-1 text-sm">Running</span>
+                    </button>
+                </div>
+
+                <p className="text-muted text-sm px-1">
+                    {mode === 'gym' ? 'Construye músculo y fuerza.' : 'Mejora tu resistencia y cardio.'}
+                </p>
             </header>
 
             {/* Pestañas de Navegación */}
