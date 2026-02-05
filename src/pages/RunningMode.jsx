@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Clock, MapPin, Activity, Save, TrendingUp, Calendar } from 'lucide-react';
+import { ArrowLeft, Clock, MapPin, Activity, Save, TrendingUp } from 'lucide-react';
+import { useGamification } from '../context/GamificationContext';
 
 const RunningMode = () => {
     const navigate = useNavigate();
@@ -48,8 +49,14 @@ const RunningMode = () => {
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
+    const { addXp } = useGamification();
+
     const handleSave = () => {
         if (!distance || !duration) return;
+
+        // Gamificación: 50 XP base + 20 XP por km
+        const gainedXp = 50 + Math.round(parseFloat(distance) * 20);
+        addXp(gainedXp);
 
         const newRun = {
             id: Date.now(),
@@ -69,7 +76,9 @@ const RunningMode = () => {
         setDistance('');
         setDuration('');
         setRpe(5);
-        alert('¡Carrera guardada con éxito! 🏃‍♂️🔥');
+        // Alert o feedback visual ya manejado por el modal de LevelUp, pero añadimos confirmación
+        // No alertamos si sube de nivel para no solapar, pero por simplicidad:
+        alert(`¡Carrera guardada! Ganaste +${gainedXp} XP 🔥`);
     };
 
     return (
