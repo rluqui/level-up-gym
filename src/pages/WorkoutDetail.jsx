@@ -20,7 +20,7 @@ const WorkoutDetail = () => {
     const analysis = !isAi ? analyzeImportedRoutine(workoutData, userProfile) : null;
 
     return (
-        <div style={{ paddingBottom: '2rem' }}>
+        <div style={{ paddingBottom: '100px' }}>
             {/* Header con botón de volver */}
             <div className="flex items-center gap-2" style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
                 <button

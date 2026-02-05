@@ -6,6 +6,7 @@ import WorkoutDetail from './pages/WorkoutDetail';
 import Nutrition from './pages/Nutrition';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
+import Admin from './pages/Admin';
 import Navigation from './components/BottomNavigation';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/nutrition" element={<Nutrition />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Navigation />
       </div>
