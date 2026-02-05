@@ -17,7 +17,7 @@ export const workoutsDetails = {
                 name: 'Estocadas con mancuernas',
                 sets: 4,
                 reps: '10',
-                videoUrl: 'https://www.youtube.com/watch?v=Fj-L8ip-2NM', // P4P Spanish
+                videoUrl: 'https://www.youtube.com/watch?v=QOVaHwm-Q6U', // Valid Zancadas video
                 muscles: 'Cuádriceps, Glúteos, Aductores',
                 benefits: 'Mejora la estabilidad, el equilibrio y corrige desequilibrios musculares.'
             },
