@@ -3,7 +3,6 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, Clock, Flame, Repeat, PlayCircle, Info, AlertTriangle, CheckCircle } from 'lucide-react';
 import { workoutsDetails } from '../data/workouts';
 import { analyzeImportedRoutine } from '../utils/aiCoach';
-import BodyMap from '../components/BodyMap';
 import { useExercises } from '../context/ExercisesContext';
 
 const WorkoutDetail = () => {
@@ -17,9 +16,6 @@ const WorkoutDetail = () => {
     // Detectar si es AI (viene por state) o Importada (por ID)
     const isAi = location.state?.isAi;
     const workoutData = isAi ? location.state.workoutData : (workoutsDetails[id] || workoutsDetails[1]);
-
-    // Estado para visualización de músculos
-    const [hoveredMuscle, setHoveredMuscle] = useState(null);
 
     // Perfil para análisis
     const userProfile = JSON.parse(localStorage.getItem('levelUp_userProfile')) || { level: 'beginner' };
@@ -75,77 +71,113 @@ const WorkoutDetail = () => {
             </button>
 
             <h3 style={{ marginBottom: '1rem' }}>Ejercicios</h3>
-            <div className="flex flex-col gap-4">
+
+            {/* LISTA DE EJERCICIOS CON DISEÑO FITCRON */}
+            <div className="flex flex-col gap-6">
                 {workoutData.exercises.map((exercise, index) => (
-                    <div key={index} className="card animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                        <h4 style={{ marginBottom: '0.5rem' }}>{exercise.name}</h4>
+                    <div key={index} className="card animate-fade-in p-0 overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
 
-                        {/* Grid de Contenido: Info | Ilustración | Video */}
-                        <div className="grid grid-cols-[1fr_auto_auto] gap-4 items-center mb-3">
-                            {/* 1. Descripción (Izq) */}
-                            <div style={{ fontSize: '0.85rem' }}>
-                                <p className="flex items-center gap-1 text-accent mb-1">
-                                    <span style={{ fontWeight: 600 }}>Zona:</span>
-                                    <span
-                                        className="cursor-pointer underline decoration-dotted relative"
-                                        onMouseEnter={() => setHoveredMuscle(exercise.muscles)}
-                                        onMouseLeave={() => setHoveredMuscle(null)}
-                                    >
-                                        {exercise.muscles}
-                                        {hoveredMuscle === exercise.muscles && (
-                                            <div className="animate-fade-in card absolute bottom-full left-1/2 -translate-x-1/2 z-50 p-4 w-[300px] shadow-2xl mb-2 pointer-events-none">
-                                                <h5 className="text-center mb-2 text-white">Músculos Trabajados</h5>
-                                                <BodyMap highlight={exercise.muscles} />
-                                            </div>
-                                        )}
-                                    </span>
-                                </p>
-                                <p className="text-muted italic text-xs leading-relaxed">
-                                    "{exercise.benefits}"
-                                </p>
-                            </div>
-
-                            {/* 2. Ilustración (Centro) */}
-                            {exercise.illustration && (
-                                <div className="flex justify-center">
-                                    <div className="bg-white p-1 rounded-lg shadow-sm" style={{ width: '80px', height: '80px' }}>
-                                        <img
-                                            src={exercise.illustration}
-                                            alt={exercise.name}
-                                            className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all"
-                                        />
-                                    </div>
-                                </div>
-                            )}
-
-                            {/* 3. Video y Datos (Derecha) */}
-                            <div className="flex flex-col items-end gap-2">
-                                {(exercise.videoUrl || getExerciseVideo(exercise.name)) && (
-                                    <a
-                                        href={getExerciseVideo(exercise.name, exercise.videoUrl)}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-sm bg-[var(--color-bg)] border border-[var(--color-primary)] text-primary hover:bg-[var(--color-primary)] hover:text-black transition-colors"
-                                        style={{ textDecoration: 'none' }}
-                                    >
-                                        <PlayCircle size={18} />
-                                    </a>
-                                )}
+                        {/* 1. Header del Ejercicio (Nombre y Carga) */}
+                        <div className="bg-[var(--color-bg-secondary)] p-4 border-b border-[var(--color-bg-tertiary)] flex justify-between items-center">
+                            <h4 style={{ margin: 0, fontSize: '1.2rem' }}>{exercise.name}</h4>
+                            <div className="flex gap-2 text-xs font-mono bg-black/20 px-2 py-1 rounded border border-white/5">
+                                <Repeat size={14} className="text-primary" />
+                                <span className="text-white/80">{exercise.sets} Series x {exercise.reps} Reps</span>
                             </div>
                         </div>
 
-                        <div className="flex justify-between text-muted" style={{
-                            fontSize: '0.875rem',
-                            borderTop: '1px solid var(--color-bg-tertiary)',
-                            paddingTop: '0.75rem'
-                        }}>
-                            <div className="flex items-center gap-2">
-                                <Repeat size={16} />
-                                <span>{exercise.sets} series x {exercise.reps} reps</span>
+                        <div className="p-4 md:p-6">
+                            {/* 2. Layout Principal: Grid Responsivo (Mobile: Stack, Desktop: 2 Cols) */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+                                {/* COLUMNA IZQ: Visual (Imagen/GIF) */}
+                                <div className="bg-black/20 rounded-lg border border-white/5 flex items-center justify-center p-4 min-h-[250px] relative group h-full">
+                                    {exercise.illustration ? (
+                                        <img
+                                            src={exercise.illustration}
+                                            alt={exercise.name}
+                                            className="w-full h-full object-contain max-h-[300px] mix-blend-screen opacity-90 group-hover:opacity-100 transition-opacity"
+                                        />
+                                    ) : (
+                                        <div className="text-muted flex flex-col items-center gap-2">
+                                            <Info size={40} />
+                                            <span>Sin imagen disponible</span>
+                                        </div>
+                                    )}
+
+                                    {/* Botón de Video (Siempre accesible) */}
+                                    {(exercise.videoUrl || getExerciseVideo(exercise.name)) && (
+                                        <a
+                                            href={getExerciseVideo(exercise.name, exercise.videoUrl)}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="absolute bottom-2 right-2 btn btn-xs btn-primary gap-1 shadow-lg opacity-90 hover:opacity-100"
+                                            style={{ textDecoration: 'none' }}
+                                        >
+                                            <PlayCircle size={14} />
+                                            VIDEO
+                                        </a>
+                                    )}
+                                </div>
+
+                                {/* COLUMNA DER: Ficha Técnica */}
+                                <div className="flex flex-col justify-center">
+                                    <table className="w-full text-sm mb-4 border-separate border-spacing-y-2">
+                                        <tbody>
+                                            <tr>
+                                                <td className="text-muted w-1/3 text-xs uppercase tracking-wider">Tipo:</td>
+                                                <td className="font-medium text-white">{exercise.type || 'Fuerza / Hipertrofia'}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-muted text-xs uppercase tracking-wider">Grupo:</td>
+                                                <td className="font-medium text-accent">{exercise.muscles?.split(',')[0]}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-muted text-xs uppercase tracking-wider">Músculos:</td>
+                                                <td className="text-xs leading-relaxed opacity-80">{exercise.muscles}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-muted text-xs uppercase tracking-wider">Equipo:</td>
+                                                <td>{exercise.equipment || 'Gimnasio General'}</td>
+                                            </tr>
+                                            <tr>
+                                                <td className="text-muted text-xs uppercase tracking-wider">Nivel:</td>
+                                                <td>
+                                                    <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider ${exercise.difficulty === 'Alta' ? 'bg-red-500/20 text-red-400 border border-red-500/20' : 'bg-green-500/20 text-green-400 border border-green-500/20'}`}>
+                                                        {exercise.difficulty || 'Media'}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    {/* Cita / Beneficio */}
+                                    <div className="p-3 bg-[var(--color-bg-secondary)] rounded text-xs italic text-muted border-l-2 border-primary/50">
+                                        "{exercise.benefits}"
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <Clock size={16} />
-                                <span>Descanso: 60-90s</span>
+
+                            {/* 3. Footer: Instrucciones Paso a Paso */}
+                            <div className="border-t border-white/5 pt-5">
+                                <h5 className="mb-3 text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2 bg-gradient-to-r from-white/10 to-transparent p-1 rounded w-fit px-2">
+                                    <CheckCircle size={14} className="text-primary" />
+                                    Ejecución Técnica
+                                </h5>
+                                {exercise.instructions ? (
+                                    <div className="pl-2">
+                                        {exercise.instructions.map((step, i) => (
+                                            <div key={i} className="flex gap-3 mb-2 last:mb-0 text-sm opacity-90 group">
+                                                <span className="font-mono text-primary/50 font-bold min-w-[1.5rem] group-hover:text-primary transition-colors">{i + 1}.</span>
+                                                <p className="leading-relaxed text-gray-300">{step}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-muted pl-2 italic">
+                                        Sigue las indicaciones del video o consulta al instructor para una técnica segura.
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>
